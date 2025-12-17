@@ -14,44 +14,26 @@ import java.util.Set;
 public class EntityManager {
     private static final Map<String, Set<Entity>> parentsOnly = new HashMap<>();
     private static Graph<Entity, DefaultEdge> network = new SimpleGraph<>(DefaultEdge.class);
-    // Тут храним все списки сущностей. Ключ
+    // Тут храним все списки сущностей. Ключ - тип сущности.
     private static Map<String, List<Entity>> entities = new HashMap<>();
+    private static List<String> types = new ArrayList<>();
 
     static {
+        types.add("функция");
+        types.add("требование");
         createTestEntity("функция");
-
-
-
-        parentsOnly.put("требование", new HashSet<>());
-        entities.put("требование", new ArrayList<>());
-        Entity oldEntity2 = null;
-        for (int i = 0; i < 10; i++) {
-            var entity = new Entity("требование", "требование_" + i);
-            addEntity(entity);
-            entities.get("требование").add(entity);
-
-            if (i % 2 == 0) {
-                oldEntity2 = entity;
-            } else {
-                setParent(oldEntity2, entity);
-            }
-
-        }
+        createTestEntity("требование");
     }
 
     private static void createTestEntity(String typeEntity) {
-        parentsOnly.put(typeEntity, new HashSet<>());
-        entities.put(typeEntity, new ArrayList<>());
-        Entity oldEntity1 = null;
+        Entity oldEntity = null;
         for (int i = 0; i < 10; i++) {
             var entity = new Entity(typeEntity, typeEntity + "_" + i);
             addEntity(entity);
-            entities.get(typeEntity).add(entity);
-
             if (i % 2 == 0) {
-                oldEntity1 = entity;
+                oldEntity = entity;
             } else {
-                setParent(oldEntity1, entity);
+                setParent(oldEntity, entity);
             }
         }
     }
@@ -62,6 +44,12 @@ public class EntityManager {
 
     public static boolean directConnectionExist(Entity e1, Entity e2) {
         return true;
+    }
+
+    public static void createEntity(String typeEntity, String nameEntity) {
+        if (types.contains(typeEntity)) {
+            Entity entity = new Entity(typeEntity, nameEntity);
+        }
     }
 
     public static void addEntity(Entity entity) {
