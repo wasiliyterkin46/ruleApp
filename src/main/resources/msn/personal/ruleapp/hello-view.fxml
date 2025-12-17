@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="msn.personal.ruleapp.HelloController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <TreeTableView fx:id="treeTable" VBox.vgrow="ALWAYS">
+
+    </TreeTableView>
+</VBox>
