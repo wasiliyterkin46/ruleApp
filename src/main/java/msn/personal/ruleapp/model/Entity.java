@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+// Экземпляры сущностей разных типов
 @RequiredArgsConstructor
 public class Entity {
     @NonNull @Getter private String type;

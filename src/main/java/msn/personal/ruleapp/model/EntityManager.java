@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+// Управление экземплярами и связями
 public class EntityManager {
     private static final Map<String, Set<Entity>> parentsOnly = new HashMap<>();
     private static Graph<Entity, DefaultEdge> network = new SimpleGraph<>(DefaultEdge.class);
